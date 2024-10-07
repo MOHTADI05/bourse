@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black-Scholes Option Pricing</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Black-Scholes Option Pricing Model</h1>
+    <form method="POST">
+        <label>Current Asset Price (S):</label>
+        <input type="number" step="any" name="S" value="100" title="Current Asset Price"><br>
+
+        <label>Strike Price (K):</label>
+        <input type="number" step="any" name="K" value="100" title="Strike Price"><br>
+
+        <label>Time to Maturity (T in years):</label>
+        <input type="number" step="any" name="T" value="1" title="Time to Maturity"><br>
+
+        <label>Risk-Free Rate (r):</label>
+        <input type="number" step="any" name="r" value="0.05" title="Risk-Free Rate"><br>
+
+        <label>Volatility (σ):</label>
+        <input type="number" step="any" name="sigma" value="0.2" title="Volatility"><br>
+
+        <label>Option Type:</label>
+        <select name="option_type" title="Option Type">
+            <option value="call">Call</option>
+            <option value="put">Put</option>
+        </select><br>
+
+        <h3>Heatmap Parameters</h3>
+        <label>Min Spot Price:</label>
+        <input type="number" step="any" name="min_spot" value="80" title="Min Spot Price"><br>
+
+        <label>Max Spot Price:</label>
+        <input type="number" step="any" name="max_spot" value="120" title="Max Spot Price"><br>
+
+        <label>Min Volatility:</label>
+        <input type="number" step="any" name="min_vol" value="0.1" title="Min Volatility"><br>
+
+        <label>Max Volatility:</label>
+        <input type="number" step="any" name="max_vol" value="0.4" title="Max Volatility"><br>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    {% if option_price %}
+        <h2>Option Price: ${{ option_price }}</h2>
+    {% endif %}
+
+    {% if img_data %}
+        <h3>Options Price - Interactive Heatmap</h3>
+        <img src="data:image/png;base64,{{ img_data }}" alt="Heatmap">
+    {% endif %}
+</body>
+</html>
