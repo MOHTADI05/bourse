@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Optimizer</title>
+</head>
+<body>
+    <h1>Optimize Your Portfolio</h1>
+    <form action="/optimize" method="post">
+        <label for="tickers">Enter Tickers (comma-separated):</label>
+        <input type="text" id="tickers" name="tickers" placeholder="e.g., SPY, BND, GLD, QQQ, VTI" required>
+        
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <form action="/your-endpoint" method="POST">
+            <label class="switch">
+                <input type="submit" class="chk" value="Submit">
+                <span class="slider"></span>
+            </label>
+        </form>
+        
+
+    </form>
+
+    {% if result %}
+    <h2>Optimal Portfolio Weights</h2>
+    <ul>
+        {% for ticker, weight in zip(result['tickers'], result['optimal_weights']) %}
+        <li>{{ ticker }}: {{ weight | round(4) }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Portfolio Performance</h3>
+    <p>Expected Annual Return: {{ result['expected_return'] | round(4) }}</p>
+    <p>Expected Volatility: {{ result['volatility'] | round(4) }}</p>
+    <p>Sharpe Ratio: {{ result['sharpe_ratio'] | round(4) }}</p>
+
+    <!-- Display the chart -->
+    <h3>Optimal Weights Chart</h3>
+    <img src="{{ result['chart_url'] }}" alt="Optimal Weights Chart">
+    {% endif %}
+</body>
+</html>
