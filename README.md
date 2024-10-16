@@ -1,7 +1,9 @@
-#Market Simulator
+Market Simulator
+
 This project is a Market Simulator designed to help investors and financial analysts make informed decisions based on quantitative calculations, actuarial science, and risk analysis. It integrates portfolio optimization, risk management, and market predictions, using a variety of models including Monte Carlo simulations and options pricing with the Black-Scholes model.
 
-#Features
+Features
+
 1/Quantitative Calculations:
 
 Analyze and forecast market trends using statistical and mathematical methods.
