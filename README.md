@@ -22,23 +22,17 @@ To get started with the Market Simulator, follow these steps:
 
 #Clone the repository:
 
-bash
-Copy code
+
 git clone https://github.com/your-username/market-simulator.git
 Navigate to the project directory:
 
-bash
-Copy code
+
 cd market-simulator
 Install dependencies (if applicable):
-
-bash
-Copy code
 pip install -r requirements.txt
 Run the application:
 
-bash
-Copy code
+
 python main.py
 Usage
 Portfolio Optimization:
