@@ -48,6 +48,7 @@ Black-Scholes Model: Used for options pricing, providing a closed-form solution 
 Modern Portfolio Theory (MPT): A framework for constructing an optimal portfolio, balancing risk and return.
 Dependencies
 numpy – For numerical calculations.
+
 scipy – For statistical modeling.
 pandas – For data manipulation and analysis.
 matplotlib – For visualization of results.
