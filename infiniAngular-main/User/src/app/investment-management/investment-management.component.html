@@ -1,0 +1,24 @@
+<h1>Investissement</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>invId</th>
+    <th>amount</th>
+    <th>invDate</th>
+    <th>imb</th>
+    <th>inv_owner</th>
+
+  </tr>
+  </thead>
+  <tbody>
+  <tbody>
+  <tr *ngFor="let investment of Investments">
+    <td>{{ investment.inv_id }}</td>
+    <td>{{ investment.amount }}</td>
+    <td>{{ investment.inv_date }}</td>
+    <td>{{ investment.imb.name }}</td>
+    <td>{{ investment.inv_owner }}</td>
+  </tr>
+
+  </tbody>
+</table>

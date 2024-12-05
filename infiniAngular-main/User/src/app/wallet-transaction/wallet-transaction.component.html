@@ -1,0 +1,93 @@
+
+<!-- transaction-list.component.html -->
+
+<!-- transaction-list.component.html -->
+
+<!-- transaction-list.component.html -->
+<div >
+<div >
+     
+    <label for="sourceRIBInput">Source RIB:</label>
+    <input class="black1" type="text" id="sourceRIBInput" [(ngModel)]="sourceRIB" placeholder="Enter Source RIB">
+  
+    <button class="shadow__btn" (click)="loadCahrt()"(click)="getTransactionsBySourceRIB()">Fetch Transactions</button>
+  </div>
+  
+  <div *ngIf="transactions.length > 0; else noTransactions">
+    
+    <table class="table table-dark dataTable">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Transaction Date</th>
+            <th scope="col">destination</th> 
+            <th scope="col">source</th> 
+            <th scope="col">Actions</th> 
+            
+            <!-- Added Actions column -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let transaction of transactions">
+            <th scope="row"><a href="#">{{ transaction.transactionId }}</a></th>
+            <td>${{ transaction.amount }}</td>
+            <td>{{ transaction.transactionDate | date }}</td>
+            <td>{{ transaction.destination }}</td>
+            <td>{{ transaction.sourceRIB }}</td>
+            
+            <td>
+                      <button class="badge bg-warning">verification domande</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  
+  <ng-template #noTransactions>
+    <p>No transactions found for Source RIB: {{ sourceRIB }}</p>
+  </ng-template>
+  
+</div>
+  <style>
+    .black1{
+    background-color: #18181b;
+    width: 100px;
+    height: 20px;
+    border-radius: 1rem;
+   
+  }
+    .shadow__btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+}
+
+.shadow__btn {
+  background: rgb(0,140,255);
+  box-shadow: 0 0 25px rgb(0,140,255);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
+}
+
+  </style>
+
+    
+
+
+
+
+
+

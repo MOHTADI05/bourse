@@ -1,0 +1,135 @@
+<aside id="sidebar" class="sidebar">
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " data-bs-target="#Dashboard-nav" data-bs-toggle="collapse" href="#">
+          <i class="fas fa-home"></i>
+          <span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="Dashboard-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a routerLink="/back/listUser">
+              <i class="bi bi-circle"></i><span>All</span>
+            </a>
+          </li>
+          <li>
+            <a routerLink="/back/Agent" >
+              <i class="bi bi-circle"></i><span>Agent</span>
+            </a>
+          </li>
+
+
+        </ul>
+       </li><!-- End Dashboard Nav -->
+
+
+
+
+      <li class="nav-heading">Pages</li>
+
+      <ul class="sidebar-nav" id="investiment-nav">
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#bank-nav" data-bs-toggle="collapse" href="#">
+            <i class="fas fa-meh-blank"></i>
+            <span>Bank Accounts</span>
+            <i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="bank-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+              <a routerLink="/back/bankAccounts">
+                <i class="bi bi-circle"></i>
+                <span>Bank Accounts</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/back/transaction">
+                <i class="bi bi-building"></i>
+                <span>Transaction</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+      <ul class="sidebar-nav" id="investiment-nav">
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#invest-nav" data-bs-toggle="collapse" href="#">
+            <i class="fas fa-money-bill-wave"></i>
+            <span>Investissement</span>
+            <i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="invest-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <li>
+              <a routerLink="/back/investment">
+                <i class="bi bi-circle"></i>
+                <span>Overview</span>
+              </a>
+            </li>
+            <li>
+              <a routerLink="/back/investment/immobilier">
+                <i class="bi bi-building"></i>
+                <span>Immobilier</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+      </ul>
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#credit-nav" data-bs-toggle="collapse" href="#">
+            <i class="fas fa-th-large"></i>
+            <span>Credit</span>
+            <i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="credit-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+                <a routerLink="/back/pack">
+                    <i class="bi bi-circle"></i><span>Pack</span>
+                </a>
+            </li>
+            <li>
+                <a routerLink="/back/AfficherCredit" >
+                    <i class="bi bi-circle"></i><span>Credit</span>
+                </a>
+            </li>
+        </ul>
+    </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/back/products">
+          <i class="fas fa-coins"></i>
+          <span>Produit</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/back/payments">
+          <i class="fas fa-dollar"></i>
+          <span>payments</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" routerLink="/back/partners">
+          <i class="fas fa-users"></i>
+          <span>partners</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+          <a class="nav-link collapsed" href="pages-register.html">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Reclamation</span>
+          </a>
+      </li><!-- End Register Page Nav -->
+
+      <li (click)="logout()" class="nav-item">
+          <a  class="nav-link collapsed" >
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span>
+          </a>
+      </li><!-- End Login Page Nav -->
+    </ul>
+  </aside><!-- End Sidebar-->

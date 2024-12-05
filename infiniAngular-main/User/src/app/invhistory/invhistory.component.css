@@ -1,0 +1,20 @@
+table {
+  width: 100%;
+  border-collapse: collapse; /* Ensures borders between cells are merged */
+}
+
+th, td {
+  text-align: left;
+  padding: 8px; /* Adjust padding to increase or decrease space inside cells */
+  border-bottom: 1px solid #ccc; /* Adds a bottom border to each cell */
+}
+
+thead th {
+  background-color: #f4f4f4; /* Light grey background for the header */
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9; /* Adds a hover effect for table rows */
+}

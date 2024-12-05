@@ -1,0 +1,14 @@
+.image-container {
+  max-width: 300px;
+  max-height: 300px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  margin-left: 10px;
+  margin-right: 30px;/* Décaler de moitié de la largeur de l'élément lui-même */
+}

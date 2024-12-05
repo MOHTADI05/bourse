@@ -1,0 +1,62 @@
+<!-- register.component.html -->
+<div class="auth-wrapper">
+  <div class="auth-content container">
+    <div class="card">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="card-body">
+            <img src="../assets/images/logo-dark.png" alt="" class="img-fluid mb-4">
+            <h4 class="mb-3 f-w-400">Sign up into your account</h4>
+            <form [formGroup]="userform" (ngSubmit)="registerUser()">
+              <div class="form-group">
+                <input type="text" class="form-control" id="nom" placeholder="Username" formControlName="nom">
+                <div *ngIf="formSubmitted && f?.['nom']?.errors?.['required']" class="text-danger">Le nom est requis.</div>
+                <div *ngIf=" userform.get('nom')?.errors?.['containsNumbersOrSpecialChars'] && userform.get('nom') " class="text-danger">Le nom ne doit contenir que des lettres et des espaces.</div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="prenom" placeholder="Last name" formControlName="prenom">
+                <div *ngIf="formSubmitted && f?.['prenom']?.errors?.['required']" class="text-danger">Le prénom est requis.</div>
+                <div *ngIf="formSubmitted && f?.['prenom']?.errors?.['containsNumbersOrSpecialChars']" class="text-danger">Le prénom ne doit contenir que des lettres et des espaces.</div>
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" id="email" placeholder="Email address" formControlName="email">
+                <div *ngIf="formSubmitted && f?.['email']?.errors?.['required']" class="text-danger">L'email est requis.</div>
+                <div *ngIf="formSubmitted && f?.['email']?.errors?.['email']" class="text-danger">Veuillez saisir une adresse email valide.</div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+                <div *ngIf="formSubmitted && f?.['password']?.errors?.['required']" class="text-danger">Le mot de passe est requis.</div>
+                <div *ngIf="formSubmitted && f?.['password']?.errors?.['minlength']" class="text-danger">Le mot de passe doit comporter au moins 6 caractères.</div>
+              </div>
+              <div class="form-group">
+                <input type="number" class="form-control" id="age" placeholder="Age" formControlName="age">
+                <div *ngIf="formSubmitted && f?.['age']?.errors?.['required']" class="text-danger">L'âge est requis.</div>
+              </div>
+              <div class="form-group">
+                <select id="gender" class="form-control" formControlName="gender">
+                  <option value="">Select gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+                <div *ngIf="formSubmitted && f?.['gender']?.errors?.['required']" class="text-danger">Gender is required.</div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="adresse" placeholder="Address" formControlName="adresse">
+                <div *ngIf="formSubmitted && f?.['adresse']?.errors?.['required']" class="text-danger">L'adresse est requise.</div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" id="phoneNum" placeholder="Phone number" formControlName="phoneNum">
+                <div *ngIf="formSubmitted && f?.['phoneNum']?.errors?.['required']" class="text-danger">Le numéro de téléphone est requis.</div>
+              </div>
+              <button type="submit" class="btn btn-primary mb-4" >Sign up</button>
+            </form>
+            <p class="mb-2">Already have an account? <a routerLink="/login" class="f-w-400">Log in</a></p>
+          </div>
+        </div>
+        <div class="col-md-6 d-none d-md-block">
+          <img src="../assets/images/auth-bg.jpg" alt="" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

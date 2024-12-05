@@ -1,0 +1,48 @@
+
+
+<div class="container">
+  <div class="content-left">
+    <div *ngIf="tabvisibal">
+
+      <button (click)="Tabinvisibal()" class="custom-button" style="background-color: #ffc451;">masque les données</button>
+      </div>
+    <div *ngIf="tabvisibal==false">
+
+    <button (click)="fetchDataByClientId()" class="custom-button" style="background-color: #ffc451;">Charger les données</button>
+  </div>
+
+    <div *ngIf="tabvisibal">
+    <table *ngIf="invHistories" class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Montant</th>
+          <th>Immobilier ID</th>
+          <th>Date</th>
+          <th>Type de transaction</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let history of invHistories">
+          <td>{{ history.h_id }}</td>
+          <td>{{ history.amount }}</td>
+          <td>{{ history.imb_id }}</td>
+          <td>{{ history.inv_Date }}</td>
+          <td>{{ history.transaction_type }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+  <section class="chart-section">
+    <div *ngIf="yearlychartvisible || weeklycharvisible || dailychartvisible" class="chart-container">
+      <div id="areaChart"></div>
+    </div>
+
+    <div class="chart-buttons">
+      <button (click)="Yearlychartvisible()" class="custom-button">Yearly Profit/Loss</button>
+      <button (click)="Weeklycharvisible()" class="custom-button">Weekly Profit/Loss</button>
+      <button (click)="Dailychartvisible()" class="custom-button">Daily Profit/Loss</button>
+    </div>
+  </section>
+</div>

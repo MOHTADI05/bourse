@@ -1,0 +1,484 @@
+<div class="card recent-sales overflow-auto">
+  <div class="filter">
+    <a class="icon" href="#" data-bs-toggle="dropdown"
+      ><i class="bi bi-three-dots"></i
+    ></a>
+    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+      <li class="dropdown-header text-start">
+        <h6>Filter</h6>
+      </li>
+
+      <li><a class="dropdown-item" href="#">Today</a></li>
+      <li><a class="dropdown-item" href="#">This Month</a></li>
+      <li><a class="dropdown-item" href="#">This Year</a></li>
+    </ul>
+  </div>
+
+  <div class="card-body">
+    <h5 class="card-title">TRANSACTION LIST <span>| This Year</span></h5>
+
+    <table class="table table-borderless datatable">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Transaction Date</th>
+          <th scope="col">destination</th> 
+          <th scope="col">source</th> 
+          <th scope="col">Actions</th> 
+          
+          <!-- Added Actions column -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <th scope="row"><a href="#">{{ transaction.transactionId }}</a></th>
+          <td>${{ transaction.amount }}</td>
+          <td>{{ transaction.transactionDate | date }}</td>
+          <td>{{ transaction.destination }}</td>
+          <td>{{ transaction.sourceRIB }}</td>
+          
+          <td>
+                    <button class="badge bg-warning">verification domande</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn-primary" (click)="loadTransactions()">Load Transactions</button>
+  </div>
+           
+
+<div *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
+  <div *ngIf="transactions$ | async as transactions" style="max-width: 460px;margin-left: 350px; margin-top: 30px;">
+   
+      </div>
+  <div style="height: 600; width: 600;" >
+    <canvas id="lineChart" width="30" height="15"></canvas>
+  </div>
+  </div>
+  <style>
+    .middle {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+    }
+  
+    .bar {
+      width: 10px;
+      height: 70px;
+      display: inline-block;
+      transform-origin: bottom center;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      box-shadow: 5px 10px 20px inset rgba(52, 152, 219, 0.8);
+      animation: loader 1.2s linear infinite;
+    }
+  
+    .bar1 {
+      animation-delay: 0.1s;
+    }
+    .bar2 {
+      animation-delay: 0.2s;
+    }
+    .bar3 {
+      animation-delay: 0.3s;
+    }
+    .bar4 {
+      animation-delay: 0.4s;
+    }
+    .bar5 {
+      animation-delay: 0.5s;
+    }
+    .bar6 {
+      animation-delay: 0.6s;
+    }
+    .bar7 {
+      animation-delay: 0.7s;
+    }
+    .bar8 {
+      animation-delay: 0.8s;
+    }
+  
+    @keyframes loader {
+      0% {
+        transform: scaleY(0.1);
+        background: transparent;
+      }
+      50% {
+        transform: scaleY(1);
+        background: #3498db;
+      }
+      100% {
+        transform: scaleY(0.1);
+        background: transparent;
+      }
+    }
+  
+    .cardcash {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      width: 260px;
+      padding: 20px 1px;
+      margin: 10px 0;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 10px 15px -3px rgba(33, 150, 243, 0.4),
+        0 4px 6px -4px rgba(33, 150, 243, 0.4);
+      border-radius: 10px;
+      background-color: #6b6ecc;
+      background: linear-gradient(45deg, #04051dea 0%, #2b566e 100%);
+    }
+  
+    .content {
+      padding: 20px;
+    }
+  
+    .content .price {
+      color: white;
+      font-weight: 800;
+      font-size: 50px;
+      text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.42);
+    }
+  
+    .content .description {
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  
+    .content .title {
+      font-weight: 800;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.64);
+      margin-top: 10px;
+      font-size: 25px;
+      letter-spacing: 1px;
+    }
+  
+    button {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+      border: none;
+      outline: none;
+      color: rgb(255 255 255);
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      background-color: rgb(33 150 243);
+      border-radius: 0.5rem;
+      width: 90%;
+      text-shadow: 0px 4px 18px #2c3442;
+    }
+  
+    .typewriter {
+      --blue: #5c86ff;
+      --blue-dark: #275efe;
+      --key: #fff;
+      --paper: #eef0fd;
+      --text: #d3d4ec;
+      --tool: #fbc56c;
+      --duration: 3s;
+      position: relative;
+      -webkit-animation: bounce05 var(--duration) linear infinite;
+      animation: bounce05 var(--duration) linear infinite;
+    }
+  
+    .typewriter .slide {
+      width: 92px;
+      height: 20px;
+      border-radius: 3px;
+      margin-left: 14px;
+      transform: translateX(14px);
+      background: linear-gradient(var(--blue), var(--blue-dark));
+      -webkit-animation: slide05 var(--duration) ease infinite;
+      animation: slide05 var(--duration) ease infinite;
+    }
+  
+    .typewriter .slide:before,
+    .typewriter .slide:after,
+    .typewriter .slide i:before {
+      content: "";
+      position: absolute;
+      background: var(--tool);
+    }
+  
+    .typewriter .slide:before {
+      width: 2px;
+      height: 8px;
+      top: 6px;
+      left: 100%;
+    }
+  
+    .typewriter .slide:after {
+      left: 94px;
+      top: 3px;
+      height: 14px;
+      width: 6px;
+      border-radius: 3px;
+    }
+  
+    .typewriter .slide i {
+      display: block;
+      position: absolute;
+      right: 100%;
+      width: 6px;
+      height: 4px;
+      top: 4px;
+      background: var(--tool);
+    }
+  
+    .typewriter .slide i:before {
+      right: 100%;
+      top: -2px;
+      width: 4px;
+      border-radius: 2px;
+      height: 14px;
+    }
+  
+    .typewriter .paper {
+      position: absolute;
+      left: 24px;
+      top: -26px;
+      width: 40px;
+      height: 46px;
+      border-radius: 5px;
+      background: var(--paper);
+      transform: translateY(46px);
+      -webkit-animation: paper05 var(--duration) linear infinite;
+      animation: paper05 var(--duration) linear infinite;
+    }
+  
+    .typewriter .paper:before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      top: 7px;
+      border-radius: 2px;
+      height: 4px;
+      transform: scaleY(0.8);
+      background: var(--text);
+      box-shadow: 0 12px 0 var(--text), 0 24px 0 var(--text), 0 36px 0 var(--text);
+    }
+  
+    .typewriter .keyboard {
+      width: 120px;
+      height: 56px;
+      margin-top: -10px;
+      z-index: 1;
+      position: relative;
+    }
+  
+    .typewriter .keyboard:before,
+    .typewriter .keyboard:after {
+      content: "";
+      position: absolute;
+    }
+  
+    .typewriter .keyboard:before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 7px;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      transform: perspective(10px) rotateX(2deg);
+      transform-origin: 50% 100%;
+    }
+  
+    .typewriter .keyboard:after {
+      left: 2px;
+      top: 25px;
+      width: 11px;
+      height: 4px;
+      border-radius: 2px;
+      box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+        60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+        22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
+        60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+      -webkit-animation: keyboard05 var(--duration) linear infinite;
+      animation: keyboard05 var(--duration) linear infinite;
+    }
+  
+    @keyframes bounce05 {
+      85%,
+      92%,
+      100% {
+        transform: translateY(0);
+      }
+  
+      89% {
+        transform: translateY(-4px);
+      }
+  
+      95% {
+        transform: translateY(2px);
+      }
+    }
+  
+    @keyframes slide05 {
+      5% {
+        transform: translateX(14px);
+      }
+  
+      15%,
+      30% {
+        transform: translateX(6px);
+      }
+  
+      40%,
+      55% {
+        transform: translateX(0);
+      }
+  
+      65%,
+      70% {
+        transform: translateX(-4px);
+      }
+  
+      80%,
+      89% {
+        transform: translateX(-12px);
+      }
+  
+      100% {
+        transform: translateX(14px);
+      }
+    }
+  
+    @keyframes paper05 {
+      5% {
+        transform: translateY(46px);
+      }
+  
+      20%,
+      30% {
+        transform: translateY(34px);
+      }
+  
+      40%,
+      55% {
+        transform: translateY(22px);
+      }
+  
+      65%,
+      70% {
+        transform: translateY(10px);
+      }
+  
+      80%,
+      85% {
+        transform: translateY(0);
+      }
+  
+      92%,
+      100% {
+        transform: translateY(46px);
+      }
+    }
+  
+    @keyframes keyboard05 {
+      5%,
+      12%,
+      21%,
+      30%,
+      39%,
+      48%,
+      57%,
+      66%,
+      75%,
+      84% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+          22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
+          60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+      }
+  
+      9% {
+        box-shadow: 15px 2px 0 var(--key), 30px 0 0 var(--key),
+          45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key),
+          90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key),
+          52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key),
+          83px 10px 0 var(--key);
+      }
+  
+      18% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 2px 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+          22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
+          60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+      }
+  
+      27% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+          22px 12px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
+          60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+      }
+  
+      36% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+          22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 12px 0 var(--key),
+          60px 12px 0 var(--key), 68px 12px 0 var(--key), 83px 10px 0 var(--key);
+      }
+  
+      45% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 0 0 var(--key), 75px 0 0 var(--key), 90px 2px 0 var(--key),
+          22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
+          60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+      }
+  
+      54% {
+        box-shadow: 15px 0 0 var(--key), 30px 2px 0 var(--key),
+          45px 0 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key),
+          90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key),
+          52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key),
+          83px 10px 0 var(--key);
+      }
+  
+      63% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+          22px 10px 0 var(--key), 37px 10px 0 var(--key), 52px 10px 0 var(--key),
+          60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 12px 0 var(--key);
+      }
+  
+      72% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key),
+          45px 2px 0 var(--key), 60px 0 0 var(--key), 75px 0 0 var(--key),
+          90px 0 0 var(--key), 22px 10px 0 var(--key), 37px 10px 0 var(--key),
+          52px 10px 0 var(--key), 60px 10px 0 var(--key), 68px 10px 0 var(--key),
+          83px 10px 0 var(--key);
+      }
+  
+      81% {
+        box-shadow: 15px 0 0 var(--key), 30px 0 0 var(--key), 45px 0 0 var(--key),
+          60px 0 0 var(--key), 75px 0 0 var(--key), 90px 0 0 var(--key),
+          22px 10px 0 var(--key), 37px 12px 0 var(--key), 52px 10px 0 var(--key),
+          60px 10px 0 var(--key), 68px 10px 0 var(--key), 83px 10px 0 var(--key);
+      }
+    }
+    .grid-container {
+      display: inline-grid;
+      grid-template-columns: auto auto auto;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+  
+    .grid-item {
+      background-color: rgba(255, 255, 255, 0.8);
+     
+      padding: 20px;
+    }
+  </style>

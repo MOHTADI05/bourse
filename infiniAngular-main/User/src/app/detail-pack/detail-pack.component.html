@@ -1,0 +1,28 @@
+<section class="credit-section">
+  <div class="credit-info">
+    <div class="wpb_text_column wpb_content_element">
+      <div class="wpb_wrapper">
+        <h3>{{ pack.name }}</h3>
+        <p><span class="bold-text">Pour qui et quels besoins ?</span></p>
+        <p><span class="credit-description">{{ pack.description }}</span></p>
+      </div>
+    </div>
+    <div class="vc_empty_space" style="height: 32px;"><span class="vc_empty_space_inner"></span></div>
+  </div>
+
+  <div class="credit-list">
+    <div *ngFor="let credit of credits" class="credit">
+      <button class="credit-name" (click)="toggleCreditDetails(credit)">{{ credit.name }}</button>
+      <div *ngIf="selectedCredit === credit" class="credit-details">
+        <div class="image-container">
+          <img class="pack-image" [src]="getImageForCredit(credit.idcredit)" alt="Pack Image">
+        </div>
+        <p>{{ credit.description }}</p>
+        <div class="credit-amount">
+          <p><span class="bold-text">Montant :</span> De {{ credit.minamount }} à {{ credit.maxamount }} DT</p>
+        </div>
+        <button class="credit-button" (click)="ouvrirFormulaireDemandeCredit(credit.idcredit)">Demander un crédit</button>
+      </div>
+    </div>
+  </div>
+</section>

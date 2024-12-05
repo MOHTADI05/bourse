@@ -1,0 +1,38 @@
+<div class="grid-container">
+
+
+
+
+
+  <br>
+  <br>
+  <div class="card" STYLE="left: 200px">
+    <div class="card2">
+      <div class="loan-simulation-body">
+        <label for="amount">Montant souhaité (en dinars):</label>
+        <br>
+        <input type="range" id="amount" (change)="calculate()" [(ngModel)]="loanAmount" min="0" max="{{prixtotal}}">
+        <br>
+        <span>{{ loanAmount | currency:'EUR' }}</span>
+        <br>
+        <label for="q">Prix totale % (en dinars):</label>
+        <br>
+        <input type="range" id="q" [(ngModel)]="percentage" min="0" max="100">
+        <br>
+        <span>{{ percentage }}%</span>
+
+        <br>
+
+        <button (click)="buy(id,  percentage)" class="BOX">buy</button>
+      </div>
+    </div>
+
+  </div>
+  <br>
+
+
+
+
+
+
+</div>

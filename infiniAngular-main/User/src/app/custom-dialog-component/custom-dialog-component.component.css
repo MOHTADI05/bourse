@@ -1,0 +1,38 @@
+.dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    z-index: 9999; /* Assure que le dialog soit au-dessus de tous les autres éléments */
+  }
+  
+  .dialog-content {
+    width: 400px; /* Largeur du dialog */
+    background-color: white;
+    border: 2px solid #ffc451; /* Bordure de couleur #ffc451 */
+    box-shadow: 0px 0px 10px #ffc451; /* Ombre de couleur #ffc451 */
+    padding: 20px;
+    border-radius: 10px; 
+  }
+  
+  /* Style pour le bouton Fermer */
+  .dialog-close-button {
+    background-color: #ffc451;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .dialog-close-button:hover {
+    background-color: #ffa500; /* Changer la couleur au survol */
+  }
+  

@@ -1,0 +1,256 @@
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+     
+      <div class="card-body">
+        <h5 class="card-title">Liste des Agents<span>&nbsp;&nbsp;&nbsp;|</span></h5>
+        <button type="button" (click)="addformvisible()" (click)="onCancelClassification()" class="badge bg-primary">add agent </button>
+        <table class="table table-borderless">
+          <thead>
+            <tr>
+              <th>CIN</th>
+              <th>Nom</th>
+              <th>Prénom</th>
+              <th>Email</th>
+                <th>Genre</th>
+              <th>Numéro de téléphone</th>
+               <th>classification</th>
+              <th>performance</th>
+              <th>potentiel</th>
+              <th>Bloqué</th>
+              <th>Classification</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of getUsersForPage()">
+              <td>{{ user.cin }}</td>
+              <td>{{ user.nom }}</td>
+              <td>{{ user.prenom }}</td>
+              <td>{{ user.email }}</td>
+                <td>{{ user.gender }}</td>
+              <td>{{ user.phoneNum }}</td>
+              <td>{{ user.classification }}</td>
+              <td>{{ user.performance }}</td>
+              <td>{{ user.potentiel }}</td>
+
+               <td>
+                <!-- Bouton "Block" si l'utilisateur n'est pas bloqué -->
+                <button *ngIf="!user.isbloked" (click)="unblockUser(user.cin)" class="badge bg-danger">unBlock</button>
+                <!-- Bouton "Unblock" si l'utilisateur est bloqué -->
+                <button *ngIf="user.isbloked" (click)="blockUser(user.cin)" class="badge bg-success">block</button>
+              </td>
+              <td> <button (click)="onSelectUser(user)" (click)="addforminvisible()"  class="badge bg-primary">Sélectionner</button></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  </div>
+ <!-- Pagination -->
+ <div class="pagination justify-content-center">
+  <button class="btn btn-primary" (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1">Previous</button>
+ <button class="btn btn-primary" (click)="currentPage = currentPage + 1" [disabled]="currentPage * pageSize >= agents.length">Next</button>
+</div>
+
+  
+  
+    
+    
+    
+
+
+
+  <div *ngIf="classificationFormVisible">
+    <h3>Classification en 9 box pour l'utilisateur sélectionné :</h3>
+    <form>
+      <div class="form-group">
+        <label for="performance">Performance :</label>
+        <select id="performance" class="form-control" [(ngModel)]="performance" name="performance">
+          <option value="below expected">below expected</option>
+          <option value="moderate">moderate</option>
+          <option value="above expected">above expected</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="potentiel">Potentiel :</label>
+        <select id="potentiel" class="form-control" [(ngModel)]="potentiel" name="potentiel">
+          <option value="low">low</option>
+          <option value="moderate">moderate</option>
+          <option value="high">high</option>
+        </select>
+      </div>
+      <div>
+        <button type="button" (click)="onSaveClassification()" class="btn btn-primary">Enregistrer</button>
+        <button type="button" (click)="onCancelClassification()" class="btn btn-secondary">Annuler</button>
+      </div>
+    </form>
+  </div>
+  
+  <div *ngIf="addFormVisible">
+    <form [formGroup]="agentForm" (ngSubmit)=" onSubmit()"> <!-- Utilisez la directive formGroup -->
+
+    <div class="form-group">
+      <label for="nom">Nom</label>
+      <input type="text" id="nom" class="form-control" formControlName="nom">
+       <div *ngIf="agentForm.get('nom')?.errors?.['required'] && agentForm.get('nom')?.touched" class="text-danger">Le nom est requis.</div>
+       <div *ngIf="agentForm.get('nom')?.errors?.['containsNumbersOrSpecialChars']" class="text-danger">Le nom ne doit contenir que des lettres et des espaces.</div>
+
+    </div>
+    <div class="form-group">
+        <label for="prenom">prenom</label>
+        <input type="text" id="prenom" class="form-control" formControlName="prenom">
+         <div *ngIf="agentForm.get('prenom')?.errors?.['required'] && agentForm.get('prenom')?.touched" class="text-danger">Le prenom est requis.</div>
+         <div *ngIf="agentForm.get('prenom')?.errors?.['containsNumbersOrSpecialChars']" class="text-danger">Le prénom ne doit contenir que des lettres et des espaces.</div>
+
+        </div>
+  
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" class="form-control" formControlName="email">
+       <div *ngIf="agentForm.get('email')?.errors?.['required'] && agentForm.get('email')?.touched" class="text-danger">L'email est requis.</div>
+       <div *ngIf="agentForm.get('email')?.errors?.['email'] && agentForm.get('email')?.touched" class="text-danger">Veuillez saisir une adresse email valide.</div>
+    </div>
+
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" class="form-control" formControlName="password">
+        <div *ngIf="formSubmitted && agentForm.get('password')?.errors?.['required'] && agentForm.get('password')?.touched" class="text-danger">Le mot de passe est requis.</div>
+        <div *ngIf="formSubmitted && agentForm.get('password')?.errors?.['minlength'] && agentForm.get('password')?.touched" class="text-danger">Le mot de passe doit comporter au moins 6 caractères.</div>
+      </div>
+    
+      <!-- Champ pour l'adresse -->
+      <div class="form-group">
+        <label for="adresse">Adresse</label>
+        <input type="text" id="adresse" class="form-control" formControlName="adresse">
+        <div *ngIf="formSubmitted && agentForm.get('adresse')?.errors?.['required'] && agentForm.get('adresse')?.touched" class="text-danger">L'adresse est requise.</div>
+      </div>
+    
+      <!-- Champ pour le genre -->
+      <div class="form-group">
+        <label for="gender">Genre</label>
+        <select id="gender" class="form-control" formControlName="gender">
+          <option value="">Sélectionnez le genre</option>
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
+        </select>
+        <div *ngIf="formSubmitted && agentForm.get('gender')?.errors?.['required'] && agentForm.get('gender')?.touched" class="text-danger">Le genre est requis.</div>
+      </div>
+    
+      <!-- Champ pour le numéro de téléphone -->
+      <div class="form-group">
+        <label for="phoneNum">Numéro de téléphone</label>
+        <input type="text" id="phoneNum" class="form-control" formControlName="phoneNum">
+        <div *ngIf="formSubmitted && agentForm.get('phoneNum')?.errors?.['required'] && agentForm.get('phoneNum')?.touched" class="text-danger">Le numéro de téléphone est requis.</div>
+      </div>
+  
+    <!-- Affichez ici d'autres messages d'erreur pour les autres validateurs -->
+    <div *ngIf="formSubmitted && agentForm.invalid" class="text-danger">Veuillez remplir tous les champs du formulaire correctement.</div>
+
+    <button type="submit" class="btn btn-primary">Ajouter Agent</button>
+    <button type="button" (click)="addforminvisible()" class="btn btn-secondary">Annuler</button>
+
+  </form>
+
+  </div>
+
+
+
+    <section class="matrix">
+      <div class="performance-axis">
+        <div class="axis-values">
+          <div class="axis-value">below expected</div>
+          <div class="axis-value">moderate</div>
+          <div class="axis-value">above expected</div>
+        </div>
+        <div class="axis-label">Performance</div>
+      </div>
+      <div class="potential-axis">
+        <div class="axis-values2">
+          <div class="axis-value">Low</div>
+          <div class="axis-value">moderate</div>
+          <div class="axis-value">High</div>
+        </div>
+        <div class="axis-label2">potentiel</div>
+      </div>
+    
+      <div class="square" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">RoughDiamond</h3>
+        <div *ngFor="let user of filterAgentsByClassification('RoughDiamond')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      <div class="square1" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">InconsistentPlayer</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('InconsistentPlayer')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      <div class="square2" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">Underperformer</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('Underperformer')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      
+
+      <div class="square3" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">FutureStar</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('FutureStar')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      <div class="square4" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">CoreEmployee</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('CoreEmployee')">
+          <span class="square-user" >{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      <div class="square5" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">EffectiveEmployee</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('EffectiveEmployee')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+
+
+
+      <div class="square6" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">ConisitentStar</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('ConisitentStar')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      <div class="square7" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">HighImpactStar</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('HighImpactStar')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+      <div class="square8" *ngIf="filterAgentsByClassification('Underperformer').length > 0">
+        <h3 class="square-title">TrustedProfessionel</h3>
+
+        <div *ngFor="let user of filterAgentsByClassification('TrustedProfessionel')">
+          <span class="square-user">{{ user.nom }} {{ user.prenom }}</span>
+        </div>
+      </div>
+         
+          
+    
+    
+
+    
+    
+      
+      
+      
+  
+  

@@ -1,0 +1,48 @@
+<app-area-chart></app-area-chart>
+
+    
+    <div class="container">
+      <div class="content-left">
+        <div *ngIf="tabvisibal2">
+
+          <button (click)="Tabinvisibal()" class="custom-button" style="background-color: #ffc451;">masque les données</button>
+          </div>
+        <div *ngIf="tabvisibal2==false">
+    
+        <button (click)="fetchDataByClientId2()" class="custom-button" style="background-color: #ffc451;">Charger les données</button>
+      </div>
+      <div *ngIf="tabvisibal2">
+
+  <table *ngIf="credits && credits.length > 0" class="custom-table">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Type de Crédit</th>
+    <th>Monthly Payment Date</th>
+    <th>Amount</th>
+    <th>Year</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let credit of credits">
+    <td>{{ credit.name }}</td>
+    <td>{{ credit.typeCredit }}</td>
+    <td>{{ credit.monthlyPaymentDate }}</td>
+    <td>{{ credit.amount }}</td>
+    <td>{{ credit.year }}</td>
+    <td>
+      <button (click)="payer(credit.idDemandecredit)" class="btn btn-danger">Payer</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+      </div>
+    </div>
+
+      <section class="chart-section">
+      <div class="chart-container">
+        <canvas id="lineChart" width="400" height="200"></canvas>
+      </div>
+    </section>
+    </div>

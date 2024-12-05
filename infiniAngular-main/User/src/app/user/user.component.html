@@ -1,0 +1,67 @@
+<div class="col-12">
+  <div class="card recent-sales overflow-auto">
+
+      <div class="card-body">
+          <h5 class="card-title">Liste des utilisateurs<span>|</span></h5>
+          <table class="table table-borderless">
+              <thead>
+                  <tr>
+                      <th>CIN</th>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>Email</th>
+                      <th>Âge</th>
+                      <th>Adresse</th>
+                      <th>Genre</th>
+                      <th>Numéro de téléphone</th>
+                      <th>Rôle</th>
+                      <th>Bloqué</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of getUsersForPage()">
+                      <td>{{ user.cin }}</td>
+                      <td>{{ user.nom }}</td>
+                      <td>{{ user.prenom }}</td>
+                      <td>{{ user.email }}</td>
+                      <td>{{ user.age }}</td>
+                      <td>{{ user.adresse }}</td>
+                      <td>{{ user.gender }}</td>
+                      <td>{{ user.phoneNum }}</td>
+                      <td>{{ user.role }}</td>
+                      <td>
+                          <!-- Bouton "Block" si l'utilisateur n'est pas bloqué -->
+                          <button *ngIf="!user.isbloked" (click)="unblockUser(user.cin)" class="badge bg-danger">unBlock</button>
+                          <!-- Bouton "Unblock" si l'utilisateur est bloqué -->
+                          <button *ngIf="user.isbloked" (click)="blockUser(user.cin)" class="badge bg-success">block</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div> 
+
+      <!-- Pagination -->
+      <div class="pagination justify-content-center">
+          <button class="btn btn-primary" (click)="currentPage = currentPage - 1" [disabled]="currentPage === 1">Previous</button>
+         <button class="btn btn-primary" (click)="currentPage = currentPage + 1" [disabled]="currentPage * pageSize >= users.length">Next</button>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <div class="container">
+            <h5 class="card-title" (click)="generateChart()" (click)="generateChart2()">Clustering Analysis</h5>
+            <canvas id="doughnutChart" style="max-height: 400px;"></canvas>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <br> <br> <br> <br> <br> <br>
+            <div class="card-body">
+                 <canvas id="radarChart" style="max-height: 400px;"></canvas>
+            </div>
+        </div>
+    </div>
+</div>

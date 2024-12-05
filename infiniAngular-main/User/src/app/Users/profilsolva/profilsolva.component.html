@@ -1,0 +1,114 @@
+<section class="form-section">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="profilForm" (ngSubmit)="onSubmit()" class="custom-form">  <div class="form-group">
+          <h2  class="form-section h2" >SOLVABILITY TEST </h2>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+    <label for="revenuMensuelNet">Revenu Mensuel Net :</label>
+    <input type="number" id="revenuMensuelNet" formControlName="revenuMensuelNet" class="form-control">
+    <div *ngIf="profilForm.get('revenuMensuelNet')?.errors?.['required'] && profilForm.get('revenuMensuelNet')?.touched" class="text-danger">Le revenu mensuel net est requis.</div>
+  </div>
+  <div class="form-group">
+    <label for="chargeMensuel">Charge Mensuelle :</label>
+    <input type="number" id="chargeMensuel" formControlName="chargeMensuel" class="form-control">
+    <div *ngIf="profilForm.get('chargeMensuel')?.errors?.['required'] && profilForm.get('chargeMensuel')?.touched" class="text-danger">La charge mensuelle est requise.</div>
+  </div>
+  <div class="form-group">
+    <label for="montantDetteTotale">Montant Dette Totale :</label>
+    <input type="number" id="montantDetteTotale" formControlName="montantDetteTotale" class="form-control">
+    <div *ngIf="profilForm.get('montantDetteTotale')?.errors?.['required'] && profilForm.get('montantDetteTotale')?.touched" class="text-danger">Le montant de la dette totale est requis.</div>
+  </div>
+  
+  <div class="form-group">
+    <label for="ancienneteEmploiActuel">Ancienneté Emploi Actuel :</label>
+    <input type="number" id="ancienneteEmploiActuel" formControlName="ancienneteEmploiActuel" class="form-control">
+    <div *ngIf="profilForm.get('ancienneteEmploiActuel')?.errors?.['required'] && profilForm.get('ancienneteEmploiActuel')?.touched" class="text-danger">L'ancienneté de l'emploi actuel est requise.</div>
+  </div>
+  <div class="form-group">
+    <label for="epargneActifsLiquides">Épargne Actifs Liquides :</label>
+    <input type="number" id="epargneActifsLiquides" formControlName="epargneActifsLiquides" class="form-control">
+    <div *ngIf="profilForm.get('epargneActifsLiquides')?.errors?.['required'] && profilForm.get('epargneActifsLiquides')?.touched" class="text-danger">L'épargne des actifs liquides est requise.</div>
+  </div>
+  <div class="form-group">
+    <label for="statutEmploi">Statut Emploi :</label>
+    <select id="statutEmploi" class="form-control" formControlName="statutEmploi">
+      <option value="CDI">CDI</option>
+      <option value="CDD">CDD</option>
+      <option value="ENTREPRENEUR">ENTREPRENEUR</option>
+
+    </select>
+    <div *ngIf="profilForm.get('statutEmploi')?.errors?.['required'] && profilForm.get('statutEmploi')?.touched" class="text-danger">Le statut emploi est requis.</div>
+  </div>
+</div>
+<div class="col-md-6">
+  <div class="form-group">
+  <div class="form-group">
+    <label for="chargeFamille">Charge Famille :</label>
+    <input type="text" id="chargeFamille" formControlName="chargeFamille" class="form-control">
+    <div *ngIf="profilForm.get('chargeFamille')?.errors?.['required'] && profilForm.get('chargeFamille')?.touched" class="text-danger">La charge famille est requise.</div>
+  </div>
+  <div class="form-group">
+    <label for="niveauEducation">Niveau Education :</label>
+    <select id="niveauEducation" class="form-control" formControlName="niveauEducation">
+      <option value="SECONDAIRE">SECONDAIRE</option>
+      <option value="BAC">BAC</option>
+      <option value="LICENCE">LICENCE</option>
+      <option value="MASTER">MASTER</option>
+      <option value="AUTRE">AUTRE</option>
+    </select>
+    <div *ngIf="profilForm.get('niveauEducation')?.errors?.['required'] && profilForm.get('niveauEducation')?.touched" class="text-danger">Le niveau éducation est requis.</div>
+  </div>
+  <div class="form-group">
+    <label for="age">Âge :</label>
+    <input type="number" id="age" formControlName="age" class="form-control">
+    <div *ngIf="profilForm.get('age')?.errors?.['required'] && profilForm.get('age')?.touched" class="text-danger">L'âge est requis.</div>
+  </div>
+  <div class="form-group">
+    <label for="regionResidence">Région de Résidence :</label>
+    <select id="regionResidence" class="form-control" formControlName="regionResidence">
+      <option value="NORD_EST">NORD_EST</option>
+      <option value="NORD_OUEST">NORD_OUEST</option>
+      <option value="CENTRE_EST">CENTRE_EST</option>
+      <option value="CENTRE_OUEST">CENTRE_OUEST</option>
+      <option value="SUD_EST">SUD_EST</option>
+      <option value="SUD_OUEST">SUD_OUEST</option>
+
+    </select>
+    <div *ngIf="profilForm.get('regionResidence')?.errors?.['required'] && profilForm.get('regionResidence')?.touched" class="text-danger">La région de résidence est requise.</div>
+  </div>
+  <div class="form-group">
+    <label for="typeLogement">Type Logement :</label>
+    <select id="typeLogement" class="form-control" formControlName="typeLogement">
+      <option value="LOCATAIRE">LOCATAIRE</option>
+      <option value="PROPRIOT">PROPRIOT</option>
+
+    </select>
+
+    <div *ngIf="profilForm.get('typeLogement')?.errors?.['required'] && profilForm.get('typeLogement')?.touched" class="text-danger">Le type logement est requis.</div>
+  </div>
+  <div class="form-group">
+    <label for="situationMatrimoniale">Situation Matrimoniale :</label>
+    <select id="situationMatrimoniale" class="form-control" formControlName="situationMatrimoniale">
+      <option value="DIVORCE">DIVORCE</option>
+      <option value="MARIER">MARIER</option>
+      <option value="CELIBATAIRE">CELIBATAIRE</option>
+    </select>
+    <div *ngIf="profilForm.get('situationMatrimoniale')?.errors?.['required'] && profilForm.get('situationMatrimoniale')?.touched" class="text-danger">La situation matrimoniale est requise.</div>
+  </div>
+</div>
+
+  <div class="form-group">
+
+  <button type="submit" [disabled]="!profilForm.valid" class="btn btn-primary">Enregistrer</button>
+</div>
+
+ </div>
+</div>
+</div>
+ 

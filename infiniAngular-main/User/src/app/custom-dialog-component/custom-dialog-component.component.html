@@ -1,0 +1,23 @@
+
+<div class="dialog-container">
+    <div class="dialog-content">
+<h2>Résultat de la simulation :</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Amortissement</th>
+            <th>Intérêt</th>
+            <th>Mensualité</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ data.amortissement }}</td>  
+            <td>{{ data.interest }}</td>
+            <td>{{ data.mensualite }}</td> 
+        </tr>    
+    </tbody>
+</table>
+<button class="dialog-close-button" (click)="closeDialog()">Fermer</button>
+    </div>
+</div>

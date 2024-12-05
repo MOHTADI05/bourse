@@ -1,0 +1,58 @@
+<div class="col-12">
+    <div class="card recent-sales overflow-auto">
+
+        <div class="card-body">
+  <h1>Pack</h1>
+  <table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sector</th>
+            <th>Email</th>
+            <th>Activity</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+
+
+
+
+
+    <tbody>
+        <tr *ngFor="let partner of partners">
+            <td>{{ partner.partnerName }}</td>
+            <td>{{ partner.sectorPartner }}</td>
+            <td>{{ partner.emailPartner }}</td>
+            <td>{{ partner.activitePartner }}</td>
+            <td>
+              <button (click)="editPartner(partner)" class="btn btn-primary">Edit</button>
+              <button (click)="deletePartner(partner.partnerId)" class="btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>Add Partner</h2>
+<form [formGroup]="partnerForm" (ngSubmit)="editingPartner ? updatePartner() : addPartner()">
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" formControlName="partnerName" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Sector:</label>
+    <input type="text" formControlName="sectorPartner" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="email" formControlName="emailPartner" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Activity:</label>
+    <input type="text" formControlName="activitePartner" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success">{{ editingPartner ? 'Edit' : 'Add' }}</button>
+  <button type="button" (click)="cancelEdit()" *ngIf="editingPartner" class="btn btn-secondary">Cancel</button>
+</form>
+        </div>
+    </div>
+</div>

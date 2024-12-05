@@ -1,0 +1,27 @@
+<h2>Investment Histories</h2>
+<table>
+  <thead>
+
+  </thead>
+
+  <tr>
+    <th>ID</th>
+    <th>Amount</th>
+    <th>transactionType</th>
+    <th>invDate</th>
+    <th>imbId</th>
+
+
+
+
+  </tr>
+
+  <tr *ngFor="let history of invHistories">
+    <td>{{ history.h_id }}</td>
+    <td>{{ history.amount }}</td>
+    <td>{{ history.transaction_type }}</td>
+    <td>{{ history.inv_Date }}</td>
+    <td>{{ history.imb_id }}</td>
+
+  </tr>
+</table>

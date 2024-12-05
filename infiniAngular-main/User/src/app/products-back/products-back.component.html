@@ -1,0 +1,90 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Value</th>
+    <th>valueEXC</th>
+    <th>Description</th>
+    <th>Is Available</th>
+    <th>Product Type</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let product of products">
+    <td>{{ product.productName }}</td>
+    <td>{{ product.valueProduct }}</td>
+    <td>{{ product.valueEXC}}</td>
+    <td>{{ product.description }}</td>
+    <td>{{ product.isAvailable }}</td>
+    <td>{{ product.productType }}</td>
+    <td>
+      <button (click)="editProduct(product)" class="btn btn-success mr-2">Edit</button>
+      <button (click)="deleteProduct(product.productId)" class="btn btn-danger">Delete</button>
+
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+<h2 class="mt-4 mb-4">Product Report</h2>
+
+<button type="button" class="btn btn-primary" (click)="downloadProductReport()">Download PDF Report</button>
+
+<h2 class="mt-4 mb-4">Product</h2>
+<form [formGroup]="productForm" (ngSubmit)="editingProduct ? updateProduct() : addProduct()">
+  <div>
+    <label>Product Name:</label>
+    <input type="text" formControlName="productName" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Value:</label>
+    <input type="number" formControlName="valueProduct" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Description:</label>
+    <input type="text" formControlName="description" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Is Available:</label>
+    <input type="text" formControlName="isAvailable" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>valueEXC:</label>
+    <input type="text" formControlName="valueEXC" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Partner:</label>
+    <input type="text" formControlName="partner" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Product Type:</label>
+    <select formControlName="productType" class="form-control">
+      <option *ngFor="let type of productTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Product Owner:</label>
+    <input type="text" formControlName="productOwner" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="image">Upload Image:</label>
+    <input type="file" id="image" formControlName="image" (change)="onImageChange($event)">
+  </div>
+
+  <form [formGroup]="productForm" (ngSubmit)="editingProduct ? updateProduct() : addProduct()">
+    <!-- form controls here -->
+    <button type="submit" class="btn btn-success mr-2" [disabled]="!productForm.valid">
+      {{ editingProduct ? 'Edit' : 'Add' }}
+    </button>
+  </form>
+  <button type="button" (click)="cancelEdit()" *ngIf="editingProduct" class="btn btn-secondary mr-2">Cancel</button>
+  <!-- Bouton pour acheter un produit -->
+
+</form>

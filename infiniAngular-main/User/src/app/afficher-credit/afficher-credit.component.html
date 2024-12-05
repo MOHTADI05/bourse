@@ -1,0 +1,39 @@
+
+<div class="col-12">
+  <div class="card recent-sales overflow-auto">
+
+      <div class="card-body">
+
+<h1>Credit</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>idcredit</th>
+            <th>name</th>
+            <th>min amount</th>
+            <th>max amount</th>
+            <th>description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let credit of credits">
+            <td>{{credit.idcredit}}</td>
+            <td>{{credit.name}}</td>
+            <td>{{credit.minamount}}</td>
+            <td>{{credit.maxamount}}</td>
+            <td>{{credit.description}}</td>
+            <td> 
+              <button (click)="ouvrirFormulaireEditCredit(credit.idcredit)" class="btn btn-primary">Edit</button>
+              <button (click)="logCreditId(credit.idcredit); deleteCredit(credit.idcredit)" class="btn btn-danger">Delete</button>
+              
+              
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="ajouterCredit()" class="btn btn-primary">Ajouter</button>
+ 
+      </div>
+  </div>
+</div>

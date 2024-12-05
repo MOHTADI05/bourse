@@ -1,0 +1,8 @@
+export enum TypePack{
+    AGRICOLE,
+    NONAGRICOLE,
+    CREATION,
+    ENVIRONEMENT,
+    FIDELISATION,
+    AUTRE
+}

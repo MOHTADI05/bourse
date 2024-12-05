@@ -1,0 +1,35 @@
+<div class="col-12">
+  <div class="card recent-sales overflow-auto">
+
+      <div class="card-body">
+
+<h2>Add credit</h2>
+<form [formGroup]="creditForm" (ngSubmit)="editingCredit ? updateCredit(creditForm.value.packId) : addCreditAndAssingToPack(creditForm.value.packId)">
+  <div class="form-group">
+    <label>name:</label>
+    <input type="text" formControlName="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>minamount:</label>
+    <input type="number" formControlName="minamount" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>maxamount:</label>
+    <input type="number" formControlName="maxamount" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>description:</label>
+    <input type="text" formControlName="description" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="packId">Pack:</label>
+    <select class="form-control" formControlName="packId" id="packId">
+      <option *ngFor="let pack of packs" [value]="pack.idP">{{ pack.name }}</option>
+    </select>
+  </div>
+
+  <button type="submit" class="btn btn-success">{{editingCredit ? 'Edit' : 'Add'}}</button>
+  <button type="button" (click)="cancelEdit()" *ngIf="editingCredit" class="btn btn-secondary">Cancel</button>
+</form>
+      </div>
+  </div></div>

@@ -1,0 +1,63 @@
+<!--<div>-->
+<!--  <h2>Sell Percentage to Demand</h2>-->
+<!--  <form [formGroup]="demandForm" (ngSubmit)="sellToDemand()">-->
+<!--    <div class="form-group">-->
+<!--      <label for="id">Demand ID:</label>-->
+<!--      <input type="number" formControlName="id" class="form-control" id="id" placeholder="Enter demand ID">-->
+<!--    </div>-->
+<!--&lt;!&ndash;    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;      <label for="user">Seller User:</label>&ndash;&gt;-->
+<!--&lt;!&ndash;      <select formControlName="user" class="form-control" id="user">&ndash;&gt;-->
+<!--&lt;!&ndash;        <option *ngFor="let user of users" [ngValue]="user">{{ user.cin }}</option>&ndash;&gt;-->
+<!--&lt;!&ndash;      </select>&ndash;&gt;-->
+<!--    <label for="id">seller ID:</label>-->
+
+<!--    <select formControlName="user" class="form-control" id="user">-->
+<!--      <option *ngFor="let user of users" [ngValue]="user">{{ user.cin }}</option>-->
+<!--    </select>-->
+
+
+
+<div *ngIf="demands && demands.length > 0">
+  <div class="cardmoh">
+    <div class="cardmoh-info">
+      <div class="section-title">
+
+        <h2>Demands for Immobilier ID: {{ immobilierId }}</h2>
+
+      </div>
+
+
+    </div>
+
+  </div>
+  <table class="custom-table">
+    <thead>
+    <tr>
+      <th>Demand ID</th>
+      <th>User ID</th>
+      <th>Immobilier ID</th>
+      <th>Amount Requested</th>
+      <th>Action</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let demand of demands">
+      <td>{{ demand.id }}</td>
+      <td>{{ +demand.user.cin }}</td>
+      <td>{{ demand.immobilier.immobilierId }}</td>
+      <td>{{ demand.amountRequested }}</td>
+      <td>
+        <button class="custom-button"
+
+                (click)="sellToDemand(demand.id)">Sell to Demand</button>
+      </td>
+    </tr>
+
+
+
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,54 @@
+<div>
+    <h1>Payments</h1>
+
+    <div class="slider-container">
+        <label>
+            Monthly Payment:
+            <input [(ngModel)]="mnttotl" type="range" min="0" max="1000" step="1" class="custom-slider">
+            <span>{{ mnttotl }}</span>
+        </label>
+    
+        <label>
+            Period:
+            <input [(ngModel)]="period" type="range" min="1" max="60" step="1" class="custom-slider">
+            <span>{{ period }}</span>
+        </label>
+    
+        <label>
+            Interest Rate:
+            <input [(ngModel)]="interst" type="range" min="0" max="20" step="0.1" class="custom-slider">
+            <span>{{ interst }}</span> %
+        </label>
+    </div>
+    
+    
+
+    <button (click)="exportToExcel(mnttotl, period, interst)" class="btn btn-info">Export to Excel</button>
+    <button (click)="getPaymentsSimu()" class="btn btn-primary">Get Payments</button>
+
+    <br>
+    <table *ngIf="paymentsSimu.length > 0">
+        <thead>
+          <tr>
+            <th>Payment Number</th>
+            <th>Payment Date</th>
+            <th>Balance</th>
+            <th>Principal Paid</th>
+            <th>Interest Paid</th>
+            <th>Accumulated Interest</th>
+            <!-- Add more headers if needed -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payment of paymentsSimu">
+            <td>{{ payment.paymentNumber }}</td>
+            <td>{{ payment.paymentDate | date:'dd/MM/yyyy' }}</td>
+            <td>{{ payment.balance }}</td>
+            <td>{{ payment.principalPaid }}</td>
+            <td>{{ payment.interestPaid }}</td>
+            <td>{{ payment.accumulatedInterest }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>

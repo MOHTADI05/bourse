@@ -1,0 +1,37 @@
+<section class="form-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-md-offset-2"> <!-- Modification des classes col-md -->
+        <div class="title-container">
+          <h1 class="title">Bienvenue au Simulateur de Crédit</h1>
+          <nav class="menu">
+            <ul>
+              <li><a href="#">Simulateur de Crédit</a></li>
+              <li><a href="#">Simulateur de Placement</a></li>
+              <li><a href="#">Simulateur de Produit</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="custom-form">
+          <form [formGroup]="simulateurForm" (ngSubmit)="onSubmit()" style="width: 100%;">
+            <div class="box-input-value">
+              <label for="montant_financement" class="control-label">Montant :</label>
+              <input type="range" min="500" max="80000" [value]="montantValue" class="slider" id="slide_montant_financement" required="required" step="100" 
+              (input)="onMontantChange($event)">
+              <p class="value">Montant DT: <span>{{ montantValue }}</span></p>
+            </div>
+            <div class="box-input-value">
+              <label for="periode"  class="control-label">Période :</label>
+              <input type="range" min="1" max="36" [value]="periodeValue" class="slider" id="slide_periode_financement" required="required" step="1" 
+              (input)="onPeriodeChange($event)">
+              <p class="value">Annee: <span>{{ periodeValue }}</span></p>
+            </div>
+            <button type="submit" class="buttonS">Submit</button>
+          </form>
+          <button (click)="FichierExcel()" class="buttonS"> Telecharger Tableau Amortissement</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

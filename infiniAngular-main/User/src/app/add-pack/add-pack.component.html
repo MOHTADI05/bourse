@@ -1,0 +1,30 @@
+
+<div class="col-12">
+  <div class="card recent-sales overflow-auto">
+
+      <div class="card-body">
+
+<h2>Add Pack</h2>
+<form [formGroup]="packForm" (ngSubmit)="editingPack ? updateCredit() : addCredit()">
+  <div class="form-group">
+    <label>name:</label>
+    <input type="text" formControlName="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Type Pack:</label>
+   <select formControlName="typePack" class="form-control">
+    <option *ngFor="let typePack of typePacks" [value]="typePack">{{typePack}}</option>
+   </select>
+  </div>
+
+  <div class="form-group">
+    <label>description:</label>
+    <input type="text" formControlName="description" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success">{{editingPack ? 'Edit' : 'Add'}}</button>
+  <button type="button" (click)="cancelEdit()" *ngIf="editingPack" class="btn btn-secondary">Cancel</button>
+</form>
+
+</div>
+  </div>
+</div>

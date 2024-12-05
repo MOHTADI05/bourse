@@ -1,0 +1,157 @@
+.matrix {
+    position: relative;
+    margin-left: 120px;
+
+  }
+  .axis-label {
+    font-weight: bold;
+    margin-bottom: -5px;
+    margin-left: 240px;
+    font-size: 20px; /* Ajustez la taille de la police selon vos préférences */
+
+
+  }
+  .axis-label2 {
+    font-weight: bold;
+    margin-bottom: -260px;
+    margin-left: 200px;
+    font-size: 20px; /* Ajustez la taille de la police selon vos préférences */
+
+
+  }
+  
+  .axis-values {
+    display: flex;
+    margin-right: -180px; /* Espacement entre les valeurs */
+
+  }
+  .axis-values2 {
+    display: flex;
+    margin-right: -150px;
+    margin-top: 350px; /* Espacement entre les valeurs */
+    /* Espacement entre les valeurs */
+
+  }
+  
+  .axis-value {
+    font-size: 12px;
+    margin-right: 190px; /* Espacement entre les valeurs */
+  }
+  
+
+  .performance-axis {
+    position: absolute;
+    bottom: -00px;
+    left: 420px;
+    transform: translateX(-50%);
+    font-weight: bold;
+  }
+  
+  .potential-axis {
+    position: absolute;
+    top: 50%;
+    right: 200px;
+    transform: translateY(-50%) rotate(-90deg);
+    font-weight: bold;
+  }
+  .square {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(255, 0, 0, 0.3);
+    margin-left: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 0, 0, 0.5);
+  }
+  
+  .square1 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(188, 2, 2, 0.533);
+    margin-left: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(188, 2, 2, 0.8);
+  }
+  
+  .square2 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(255, 0, 0, 0.655);
+    margin-left: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 0, 0, 0.9);
+  }
+  
+  .square3 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(255, 115, 0, 0.3);
+    margin-left: 290px;
+    margin-top: -660px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 115, 0, 0.5);
+  }
+  
+  .square4 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(255, 115, 0, 0.597);
+    margin-left: 290px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 115, 0, 0.8);
+  }
+  
+  .square5 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(255, 115, 0, 0.84);
+    margin-left: 290px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 115, 0, 0.95);
+  }
+  
+  .square6 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(174, 255, 0, 0.3);
+    margin-left: 570px;
+    margin-top: -660px;
+    border-radius: 10px;
+    border: 2px solid rgba(174, 255, 0, 0.5);
+  }
+  
+  .square7 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(174, 255, 0, 0.533);
+    margin-left: 570px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(174, 255, 0, 0.8);
+  }
+  
+  .square8 {
+    width: 250px;
+    height: 200px;
+    background-color: rgba(174, 255, 0, 0.808);
+    margin-left: 570px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid rgba(174, 255, 0, 0.95);
+  }
+  .square-title {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #333; /* Couleur du texte */
+  }
+  .square-user {
+    text-align: center;
+    margin-left: 20px;
+    font-size: 1.0rem;
+    color: #333; /* Couleur du texte */
+  }

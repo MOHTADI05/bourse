@@ -1,0 +1,26 @@
+
+<div class="row row-offcanvas row-offcanvas-left row-interne clearfix">
+    <main class="main-content col" id="content" role="main">
+      <section class="section">
+
+        <div class="card-container">
+            <div *ngFor="let product of products" class="card">
+                <img src="http://localhost:8084/products/images/{{product.filename}}" class="card-img-top" alt="Product Image">
+                <div class="card-body">
+                    {{product.filename}}
+                    <h5 class="card-title">{{ product.productName }}</h5>
+                    <p class="card-text">Value: {{ product.valueProduct }}</p>
+                    <p class="card-text">Value EXC: {{ product.valueEXC }}</p>
+                    <p class="card-text">Description: {{ product.description }}</p>
+                    <p class="card-text">Is Available: {{ product.isAvailable }}</p>
+                    <p class="card-text">Product Type: {{ product.productType }}</p>
+                    <p class="card-text">Product Owner: {{ product.productOwner }}</p>
+                    <button (click)="tobuyProduct(product)" class="btn btn-info">Buy</button>
+                </div>
+            </div>
+        </div>
+        
+</section>
+</main>
+</div>
+

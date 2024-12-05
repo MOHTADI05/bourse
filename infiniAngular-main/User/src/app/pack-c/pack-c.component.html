@@ -1,0 +1,36 @@
+<div class="col-12">
+  <div class="card recent-sales overflow-auto">
+
+      <div class="card-body">
+<h1>Pack</h1>
+<table class="table table-borderless">
+    <thead>
+        <tr>
+            <th>idPack</th>
+            <th>name</th>
+            <th>Type pack</th>
+            <th>description</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pack of packs">
+            <td>{{pack.idP}}</td>
+            <td>{{pack.name}}</td>
+            <td>{{pack.typePack}}</td>
+            <td>{{pack.description}}</td>
+            <td>
+                <button (click)="ouvrirFormulaireEditPack(pack.idP)" class="btn btn-primary">Edit</button>
+              <button (click)="logCreditId(pack.idP); deleteCredit(pack.idP)" class="btn btn-danger">Delete</button>
+              <button (click)="AfficherCreditByPack(pack.idP)"  class="btn btn-danger">Afficher credit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="ajouterPack()" class="btn btn-primary">Ajouter</button>
+
+
+
+      </div>
+  </div>
+</div>

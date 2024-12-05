@@ -1,0 +1,251 @@
+
+
+
+
+
+    <main  id="main" style="margin-left: -50px;" >
+
+      <!-- ======= Services Section ======= -->
+      <section id="services" class="services" #servicesSection>
+        <div class="container" data-aos="fade-up">
+          <div class="section-title">
+            <h2>Credit</h2>
+            <p>Check our packs</p>
+          </div>
+          <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false">
+            <div class="carousel-inner" >
+              <ng-container *ngFor="let packsGroup of packs | chunkPipe: 3; let i = index">
+                <div class="carousel-item" [class.active]="i === 0">
+                  <div class="row">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" *ngFor="let pack of packsGroup">
+                      <div class="icon-box">
+                        <div class="image-container">
+                          <img  class="pack-image"  [src]="getImageForPack(pack.idP)" alt="Pack Image">
+                        </div>
+                        <h4><a [routerLink]="['/front/detailPack', pack.idP]">{{pack.name}}</a></h4>
+                        <p>{{pack.description}}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev" style="color: black;">
+              <span  class="fas fa-chevron-left" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next" style="color: black;">
+              <span  class="fas fa-chevron-right"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+        </div>
+      </section><!-- End Services Section -->
+
+
+      <!-- ======= Portfolio Section ======= -->
+      <section id="Simulateur" class="services"  >
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>Simulateur</h2>
+            <p>Try our simulator</p>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bxl-dribbble"></i></div>
+                <h4><a href="">Simulateur Credit</a></h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-file"></i></div>
+                <h3><a routerLink="/front/simulateur-produit" >Simulator Payment</a></h3>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+
+              </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+              <div class="icon-box">
+                <div class="icon"><i class="bx bx-tachometer"></i></div>
+                <h4><a href="">Simulateur Placement</a></h4>
+                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+              </div>
+            </div>
+
+          </div>
+         </div>
+      </section><!-- End Portfolio Section -->
+
+
+
+      <!-- ======= Team Section ======= -->
+      <section id="team" class="team">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>Team</h2>
+            <p>Check our Team</p>
+          </div>
+
+          <div class="row">
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="100">
+                <div class="member-img">
+                  <img src="../assets/images/team/team-1.jpg" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Walter White</h4>
+                  <span>Chief Executive Officer</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="200">
+                <div class="member-img">
+                  <img src="../assets/images/team/team-2.jpg" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Sarah Jhonson</h4>
+                  <span>Product Manager</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="300">
+                <div class="member-img">
+                  <img src="../assets/images/team/team-3.jpg" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>William Anderson</h4>
+                  <span>CTO</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+              <div class="member" data-aos="fade-up" data-aos-delay="400">
+                <div class="member-img">
+                  <img src="../assets/images/team/team-4.jpg" class="img-fluid" alt="">
+                  <div class="social">
+                    <a href=""><i class="bi bi-twitter"></i></a>
+                    <a href=""><i class="bi bi-facebook"></i></a>
+                    <a href=""><i class="bi bi-instagram"></i></a>
+                    <a href=""><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+                <div class="member-info">
+                  <h4>Amanda Jepson</h4>
+                  <span>Accountant</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Team Section -->
+
+      <!-- ======= Contact Section ======= -->
+      <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+
+          <div class="section-title">
+            <h2>Contact</h2>
+            <p>Contact Us</p>
+          </div>
+
+
+
+          <div class="row mt-5">
+
+            <div class="col-lg-4">
+              <div class="info">
+                <div class="address">
+                  <i class="bi bi-geo-alt"></i>
+                  <h4>Location:</h4>
+                  <p>A108 Adam Street, New York, NY 535022</p>
+                </div>
+
+                <div class="email">
+                  <i class="bi bi-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>com</p>
+                </div>
+
+                <div class="phone">
+                  <i class="bi bi-phone"></i>
+                  <h4>Call:</h4>
+                  <p>+1 5589 55488 55s</p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-lg-8 mt-5 mt-lg-0">
+
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+              </form>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+
+
+
+
+
+

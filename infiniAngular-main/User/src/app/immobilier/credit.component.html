@@ -1,0 +1,76 @@
+<h1>Immobiliers</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>Description</th>
+    <th>pourcentage</th>
+    <th>foundingDate</th>
+    <th>location</th>
+    <th>Name</th>
+    <th>prixtotlal</th>
+    <th>restprix</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let immobilier of immobiliers">
+    <td>{{immobilier.immobilierId}}</td>
+    <td>{{immobilier.description}}</td>
+    <td>{{immobilier.pourcentage}}</td>
+    <td>{{immobilier.foundingDate}}</td>
+    <td>{{immobilier.location}}</td>
+    <td>{{immobilier.name}}</td>
+    <td>{{immobilier.prixtotlal}}</td>
+    <td>{{immobilier.restprix}}</td>
+
+    <td>
+      <button (click)="editImmobilier(immobilier)" class="btn btn-primary">Edit</button>
+      <button (click)="deleteImmobilier(immobilier.immobilierId)" class="btn btn-danger">Delete</button>
+      <input type="number" [(ngModel)]="amount" placeholder="Enter amount" >
+      <button (click)="sell(immobilier.immobilierId, amount)" class="btn btn-danger">Sell</button>
+
+    </td>
+  </tr>
+  </tbody>
+</table>
+<h2>{{ editingImmobilier ? 'Edit' : 'Add' }} Immobilier</h2>
+<form [formGroup]="immobilierForm" (ngSubmit)="editingImmobilier ? updateImmobilier() : addImmobilier()">
+
+  <div class="form-group">
+    <label>Description:</label>
+    <input type="text" formControlName="description" class="form-control" id="description" placeholder="Enter description">
+  </div>
+  <div class="form-group">
+    <label>pourcentage:</label>
+    <input type="number" formControlName="pourcentage" class="form-control" id="pourcentage" placeholder="Enter percentage">
+  </div>
+  <div class="form-group">
+    <label>foundingDate:</label>
+    <input type="date" formControlName="foundingDate" class="form-control" id="foundingDate"placeholder="Enter date">
+  </div>
+  <div class="form-group">
+    <label>Location:</label>
+    <input type="text" formControlName="location" class="form-control" id="location" placeholder="Enter location">
+  </div>
+  <div class="form-group">
+    <label>Name:</label>
+    <input type="text" formControlName="name" class="form-control" id="name" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label>prixtotlal:</label>
+    <input type="number" formControlName="prixtotlal" class="form-control" id="prixtotlal" placeholder="Enter total price">
+  </div>
+  <div class="form-group">
+    <label>restprix:</label>
+    <input type="number" formControlName="restprix" class="form-control" id="restprix" placeholder="Enter rest price">
+  </div>
+  <button type="submit" class="btn btn-success">{{ editingImmobilier ? 'Update' : 'Add' }}</button>
+  <button type="button" (click)="cancelEdit()" *ngIf="editingImmobilier" class="btn btn-secondary">Cancel</button>
+</form><!-- Assuming you iterate over properties in your Angular component -->
+
+
+
+
+
+

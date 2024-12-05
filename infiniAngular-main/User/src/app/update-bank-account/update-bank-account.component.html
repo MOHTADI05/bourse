@@ -1,0 +1,35 @@
+<div class="login wrap larger-card">
+    <form [formGroup]="bankAccountForm" (ngSubmit)="updateAccount()">
+      <div>
+        <label for="balance">Balance</label>
+        <input class="black-input" type="number" formControlName="balance" id="balance">
+      </div>
+      <div>
+        <label for="openDate">Open Date</label>
+        <input class="black-input" type="date" formControlName="openDate" id="openDate">
+      </div>
+      <div>
+        <label for="loyaltyScore">Loyalty Score</label>
+        <input class="black-input" type="number" formControlName="loyaltyScore" id="loyaltyScore">
+      </div>
+      <div>
+        <label for="typeAccount">Type Account</label>
+        <select class="black-input" formControlName="typeAccount" id="typeAccount">
+          <option value="SAVING">SAVING</option>
+          <option value="CURRENT">CURRENT</option>
+          <option value="INVESTING">INVESTING</option>
+        </select>
+      </div>
+      <div>
+        <label for="user">User</label>
+        <input class="black-input" type="number" formControlName="user" id="user">
+      </div>
+      <div>
+        <label for="code">Code</label>
+        <input class="black-input" type="number" formControlName="code" id="code">
+      </div>
+      <button class="Btn" type="submit" [disabled]="bankAccountForm.invalid">Create Bank Account</button>
+    </form>
+  
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>

@@ -1,0 +1,67 @@
+<section class="form-section">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h2  class="form-section h2" >Credit Request </h2>
+
+<form [formGroup]="demandeCreditForm" (ngSubmit)="submitDemandeCreditForm()">
+  <div class="form-group">
+    <label>amount:</label>
+    <input type="number" formControlName="amount" class="form-control">
+    <div *ngIf="demandeCreditForm.get('amount')?.errors?.['required'] && demandeCreditForm.get('amount')?.touched">
+        Le montant est requis.
+      </div>
+      <div *ngIf="demandeCreditForm.get('amount')?.errors?.['amountRange'] && demandeCreditForm.get('amount')?.touched">
+        Le montant doit être compris entre {{ selectedCredit.minamount }} et {{ selectedCredit.maxamount }}.
+      </div>
+  </div>
+  <div class="form-group">
+    <label>year:</label>
+    <input type="number" formControlName="year" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Type Pack:</label>
+   <select formControlName="typeCredit" class="form-control">
+    <option *ngFor="let typeCredit of typeCredits" [value]="typeCredit">{{typeCredit}}</option>
+   </select>
+  </div>
+  <div class="form-group">
+    <label>Mounthy Payment:</label>
+    <input type="date" formControlName="monthlyPaymentDate" class="form-control">
+  </div>
+ 
+    <!-- Autres champs pour la demande de crédit -->
+  
+    <div formGroupName="garant">
+      <h2  class="form-section h2" >Garantor</h2>
+      <div class="form-group">
+        <label >Nom :</label>
+        <input type="text" formControlName="nameGarantor"class="form-control">
+      </div>
+      <div class="form-group">
+        <label >Second name :</label>
+        <input type="text" formControlName="secondnameGarantor"class="form-control">
+      </div>
+      <div class="form-group">
+        <label>salary :</label>
+        <input type="number" formControlName="salaryGarantor"  class="form-control">
+      </div>
+      <div class="form-group">
+        <label >workGarantor :</label>
+        <input type="text" formControlName="workGarantor" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Image :</label>
+        <input type="text" formControlName="urlimage" class="form-control">
+    </div>
+    
+      <!-- Autres champs pour le garant -->
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+  </form>
+  
+      </div></div></div>
+</section>

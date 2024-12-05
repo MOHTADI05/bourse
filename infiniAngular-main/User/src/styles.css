@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "assets/css/style.css";
+@import "assets/css/stylefront.css";
+@import "assets/css/styleback.css";
+@import "/src/styles.css";
+@import "assets/css/pages/pages.css";
+@import "node_modules/ngx-toastr/toastr.css";

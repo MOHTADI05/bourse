@@ -1,0 +1,321 @@
+<div class="cardmoh">
+  <div class="cardmoh-info">
+    <div class="section-title">
+      <h2>TRADING SIMULATOR</h2>
+      <h1 class="logo me-auto me-lg-0">Trade-in<span>.</span></h1>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+<div class="background-container">
+  
+  <section id="Simulateur" class="services" #servicesSection>
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+      <div class="col-lg-3 col-ms-4">
+        <div class="card">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="card-inner">
+            <br><br><br>
+            <div class="section-title">
+              <h2>TRADING</h2>
+              <p>New Portfolio</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-7 col-ms-7 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="200" style="margin-left: 400px;margin-right: 200px;margin-top: 30px;">
+        <div class="form-container">
+          <form class="form">
+            <div class="form-group">
+
+              <form [formGroup]="bankAccountForm" (ngSubmit)="createBankAccount()">
+                <div>
+                  <label for="balance">Balance</label>
+                  <input class="black-input" type="number" formControlName="balance" id="balance">
+                </div>
+                <div>
+                  <label for="openDate">Open Date</label>
+                  <input class="form-submit-btn" type="date" formControlName="openDate" id="openDate">
+                </div>
+                <div>
+                  <label for="loyaltyScore">Loyalty Score</label>
+                  <h1>1</h1>
+                </div>
+                <button class="form-submit-btn" type="submit" [disabled]="bankAccountForm.invalid" style="margin-left: 120px" routerLink="/bonus">Create Bank Account</button>
+                <br>
+              </form>
+              
+            </div>
+          </form>
+        </div>
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      </div>
+    </div>
+  </div>
+  </section>
+</div>
+
+  <style>
+    .form-container {
+  width: 700px;
+  left: 400px;
+  right: 200px;
+  background: linear-gradient(#212121, #212121) padding-box,
+              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 16px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #717171;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #414141;
+}
+
+.form-container .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #fff;
+  height: 96px;
+  border: 1px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: #717171;
+  font-weight: 600;
+  width: 40%;
+  background: #313131;
+  border: 1px solid #414141;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.card {
+  width: 400px;
+  height: 200px;
+  transition: all 0.2s;
+  position: relative;
+  cursor: pointer;
+}
+
+.card-inner {
+  width: inherit;
+  height: inherit;
+  background: rgba(255,255,255,.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+}
+
+.card:hover {
+  transform: scale(1.04) rotate(1deg);
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(#e6c233, #e6c233);
+  border-radius: 50%;
+  position: absolute;
+  animation: move-up6 2s ease-in infinite alternate-reverse;
+}
+
+.circle:nth-child(1) {
+  top: -25px;
+  left: -25px;
+}
+
+.circle:nth-child(2) {
+  bottom: -25px;
+  right: -25px;
+  animation-name: move-down1;
+}
+
+@keyframes move-up6 {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes move-down1 {
+  to {
+    transform: translateY(10px);
+  }
+}
+
+.background-container {
+  background-image: url('assets/images/testimonials-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 200vh;
+}
+.background-container2 {
+  background-image: url('assets/images/testimonials-bg.jpg'); /* Update the path */
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  transform: rotate(180deg); /* Rotate the background image by 180 degrees */
+}
+.cardmoh {
+ width: 1250px;
+ height: 90px;
+ background: #f5f5f5;
+ padding: 2rem 1.5rem;
+ transition: box-shadow .3s ease, transform .2s ease;
+}
+
+.cardmoh-info {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ transition: transform .2s ease, opacity .2s ease;
+}
+
+/*Image*/
+.cardmoh-avatar {
+ --size: 60px;
+ background: linear-gradient(to top, #f1e1c1 0%, #fcbc97 100%);
+ width: var(--size);
+ height: var(--size);
+ border-radius: 50%;
+ transition: transform .2s ease;
+ margin-bottom: 1rem;
+}
+
+
+/*cardmoh footer*/
+.cardmoh-social {
+ transform: translateY(200%);
+ display: flex;
+ justify-content: space-around;
+ width: 100%;
+ opacity: 0;
+ transition: transform .2s ease, opacity .2s ease;
+}
+
+.cardmoh-social__item {
+ list-style: none;
+}
+
+.cardmoh-social__item svg {
+ display: block;
+ height: 18px;
+ width: 18px;
+ fill: #515F65;
+ cursor: pointer;
+ transition: fill 0.2s ease ,transform 0.2s ease;
+}
+
+/*Text*/
+.cardmoh-title {
+ color: #333;
+ font-size: 1.5em;
+ font-weight: 600;
+ line-height: 2rem;
+}
+
+.cardmoh-subtitle {
+ color: #859ba8;
+ font-size: 0.8em;
+}
+
+/*Hover*/
+.cardmoh:hover {
+ box-shadow: 0 8px 50px #23232333;
+}
+
+.cardmoh:hover .cardmoh-info {
+ transform: translateY(-5%);
+}
+
+.cardmoh:hover .cardmoh-social {
+ transform: translateY(100%);
+ opacity: 1;
+}
+
+.cardmoh-social__item svg:hover {
+ fill: #232323;
+ transform: scale(1.1);
+}
+
+.cardmoh-avatar:hover {
+ transform: scale(1.1);
+}
+  </style>

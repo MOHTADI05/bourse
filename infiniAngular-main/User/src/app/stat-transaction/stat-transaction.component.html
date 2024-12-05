@@ -1,0 +1,31 @@
+<div *ngIf="errorMessage">
+    <p>{{ errorMessage }}</p>
+  </div>
+  
+  <div *ngIf="transactions$ | async as transactions" style="max-width: 460px;margin-left: 350px; margin-top: 30px;">
+    <h2>List of Transactions</h2>
+    <table class="table table-borderless datatable">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Transaction Date</th>
+          <th scope="col">Actions</th> 
+          <th  scope="col"><button routerLink="/addTransaction">New Transaction</button></th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let transaction of transactions">
+          <th scope="row"><a href="#">{{ transaction.transactionId }}</a></th>
+          <td>{{ transaction.amount }}</td>
+          <td>{{ transaction.transactionDate | date }}</td>
+          <td>
+         
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn-primary" (click)="loadTransactions()">Load Transactions</button>
+  </div>
+ 
+ 
